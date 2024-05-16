@@ -1,5 +1,28 @@
 {
-    "cases": [
-        
-    ]
+  "cases": [
+    {
+      "imagem": "https://unsplash.it/600/400?image=760",
+      "descricao": "Uma empresa de tecnologialança um desafio de gamificação, onde os funcionarios devem propor e implementar ideias inovadoras."
+    },
+    {
+      "imagem": "https://unsplash.it/600/400?image=201",
+      "descricao": "Empresa de consultoria cria uma narrativa interativa de gamificação para seu programa de treinamento"
+    },
+    {
+      "imagem": "https://unsplash.it/600/400?image=549",
+      "descricao": "Uma empresa de games implementa uma competição gamificada entre equipes que competem pelo topo do ranking"
+    },
+    {
+      "imagem": "https://unsplash.it/600/400?image=15",
+      "descricao": "Uma empresa de saude promove o bem estar dos funcionarios atraves de um desafio de gamificção e condicionamento fisico"
+    }
+  ],
+  "solicitacoes": [
+    {
+      "id": "25f3",
+      "nome": "jdcjlwnc",
+      "email": "wecccwec",
+      "descricao": "wccwecewcc"
+    }
+  ]
 }

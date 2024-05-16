@@ -102,10 +102,54 @@ const renderizarCases = () => {
         <p>${cardCase.descricao}</p>
         <button>Ver mais</button>
         </div>`
-
-
     })
 
     elementoLista.innerHTML = template
+}
 
+const carregarCases = () => {
+    fetch("http://localhost:3000/cases")
+    .then( (resposta) => resposta.json() )
+    .then ( (dados) => {
+        console.log (dados);
+        listaCases = dados
+        renderizarCases() 
+    })
+
+    .catch( erro => console.error(erro))
+}
+
+const solicitarOrcamento = () => {
+    // pegar valores dos inputs
+    let valorNome = document.getElementById("campo-nome").value
+    let valorEmail = document.getElementById("campo-email").value
+    let valorDescricao = document.getElementById("campo-descricao").value
+
+    console.log (valorNome);
+    console.log (valorEmail);
+    console.log (valorDescricao);
+
+    // organizar objetos com os valores
+    let dadosForm = {
+        nome: valorNome,
+        email: valorEmail,
+        descricao: valorDescricao
+    }
+
+    // enviar requisicao para API 
+        // 127.0.0.1:= localhost
+        // metodo HHTP POST - criar -> cadastrar ou criar
+    fetch("http://127.0.0.1:3000/solicitacoes", {
+        method: "POST",
+        headers:  {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(dadosForm)
+    })
+    .then (resposta => console.log(resposta))
+    .catch (erro => console.log(erro))   
+
+    // limpar os campos
+    // mostrar alert com msg de sucesso
+    // caso ERRo - alert com msg erro
 }
