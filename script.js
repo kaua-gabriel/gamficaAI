@@ -94,7 +94,7 @@ const renderizarCases = () => {
 
     let template = ""
 
-    listaCases.forEach( cardCase => {
+    listaCases.forEach(cardCase => {
 
 
         template += ` <div class="card">
@@ -109,25 +109,25 @@ const renderizarCases = () => {
 
 const carregarCases = () => {
     fetch("http://localhost:3000/cases")
-    .then( (resposta) => resposta.json() )
-    .then ( (dados) => {
-        console.log (dados);
-        listaCases = dados
-        renderizarCases() 
-    })
+        .then((resposta) => resposta.json())
+        .then((dados) => {
+            console.log(dados);
+            listaCases = dados
+            renderizarCases()
+        })
 
-    .catch( erro => console.error(erro))
+        .catch(erro => console.error(erro))
 }
 
-const solicitarOrcamento = () => {
+const solicitarOrcamento = (event) => {
     // pegar valores dos inputs
     let valorNome = document.getElementById("campo-nome").value
     let valorEmail = document.getElementById("campo-email").value
     let valorDescricao = document.getElementById("campo-descricao").value
 
-    console.log (valorNome);
-    console.log (valorEmail);
-    console.log (valorDescricao);
+    console.log(valorNome);
+    console.log(valorEmail);
+    console.log(valorDescricao);
 
     // organizar objetos com os valores
     let dadosForm = {
@@ -137,19 +137,31 @@ const solicitarOrcamento = () => {
     }
 
     // enviar requisicao para API 
-        // 127.0.0.1:= localhost
-        // metodo HHTP POST - criar -> cadastrar ou criar
+    // 127.0.0.1:= localhost
+    // metodo HHTP POST - criar -> cadastrar ou criar
     fetch("http://127.0.0.1:3000/solicitacoes", {
         method: "POST",
-        headers:  {
+        headers: {
             "content-type": "application/json"
         },
         body: JSON.stringify(dadosForm)
     })
-    .then (resposta => console.log(resposta))
-    .catch (erro => console.log(erro))   
+        .then(resposta => {
+            console.log(resposta)
 
-    // limpar os campos
-    // mostrar alert com msg de sucesso
-    // caso ERRo - alert com msg erro
+            // limpar os campos
+            documento.querySelector("#contato form").reset()
+
+            // mostrar alert com msg de sucesso
+            alert("Solicitação cadastrada")
+        })
+
+        .catch(erro => {
+            // CASO ERRO - alert com msg erro
+            console.log(erro)
+            console.log.error(erro)
+            alert("Erro desconhecido")
+        })
+
+   event.preventDeDefault()   ''
 }
